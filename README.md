@@ -15,3 +15,32 @@ So,the voltage is simply controlled by the potentiometer and the LED is connecte
 
 ## FUTURE IMPROVEMENTS
 The buzzer can also be used for the detection and the conditions can be changed according to the need.
+
+## CODE
+//potentiometer and led
+int potentio=A2;
+int del=850;
+int led=9;
+float readval;
+void setup()
+{
+  pinMode(potentio,INPUT);
+  pinMode(led,OUTPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  readval=(5.0/1023.0)*analogRead(potentio);
+  Serial.print("The reading of potentiometer is: ");
+  Serial.println(readval);
+  delay(del);
+  if(readval>=5.0)
+  {
+    digitalWrite(led,HIGH);
+
+  }
+  if(readval<5.0)
+  {
+    digitalWrite(led,LOW);
+  }
+}
